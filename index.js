@@ -8,7 +8,7 @@
   let mouseX = 0;
   let mouseY = 0;
 
-  const dots = [
+  const circles = [
     { x: 100, y: 100, radius: 25, xMove: '+', yMove: '+' },
     { x: 40, y: 200, radius: 25, xMove: '-', yMove: '+' },
     { x: 250, y: 300, radius: 25, xMove: '+', yMove: '-' },
@@ -29,14 +29,14 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // draw dots
-    for (let i = 0; i < dots.length; i++) {
-      drawDot(dots[i]);
+    // draw circles
+    for (let i = 0; i < circles.length; i++) {
+      drawCircle(circles[i]);
     };
 
     // set animation timeout
     setTimeout(() => {
-      window.requestAnimationFrame(moveDot);
+      window.requestAnimationFrame(moveCircle);
     }, 2500);
   }
 
@@ -44,41 +44,41 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  function moveDot() {
+  function moveCircle() {
     clearCanvas();
 
-    // Iterate over all the dots.
-    for(let i = 0; i < dots.length; i++) {
+    // Iterate over all the circles.
+    for(let i = 0; i < circles.length; i++) {
 
-      if( dots[i].xMove == '+' ) {
-        dots[i].x += frameLength;
+      if( circles[i].xMove == '+' ) {
+        circles[i].x += frameLength;
       } else {
-        dots[i].x -= frameLength;
+        circles[i].x -= frameLength;
       }
-      if( dots[i].yMove == '+' ) {
-        dots[i].y += frameLength;
+      if( circles[i].yMove == '+' ) {
+        circles[i].y += frameLength;
       } else {
-        dots[i].y -= frameLength;
+        circles[i].y -= frameLength;
       }
 
-      drawDot(dots[i])
+      drawCircle(circles[i])
 
-      if( (dots[i].x + dots[i].radius) >= canvas.width ) {
-        dots[i].xMove = '-';
+      if( (circles[i].x + circles[i].radius) >= canvas.width ) {
+        circles[i].xMove = '-';
       }
-      if( (dots[i].x - dots[i].radius) <= 0 ) {
-        dots[i].xMove = '+';
+      if( (circles[i].x - circles[i].radius) <= 0 ) {
+        circles[i].xMove = '+';
       }
-      if( (dots[i].y + dots[i].radius) >= canvas.height ) {
-        dots[i].yMove = '-';
+      if( (circles[i].y + circles[i].radius) >= canvas.height ) {
+        circles[i].yMove = '-';
       }
-      if( (dots[i].y - dots[i].radius) <= 0 ) {
-        dots[i].yMove = '+';
+      if( (circles[i].y - circles[i].radius) <= 0 ) {
+        circles[i].yMove = '+';
       }
     }
 
     // Render it again
-    window.requestAnimationFrame(moveDot);
+    window.requestAnimationFrame(moveCircle);
   }
 
   function drawRect({
@@ -91,7 +91,7 @@
     ctx.fillRect(x, y, width, height);
   }
 
-  function drawDot({
+  function drawCircle({
     x,
     y,
     radius
