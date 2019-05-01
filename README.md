@@ -16,3 +16,6 @@ Rect vs circles needs to be run on a https dev server due to the webgazer.js req
 ```
 const eyegaze = false; // or true
 ```
+
+## Citations
+[Webgazer.js library](https://webgazer.cs.brown.edu)
